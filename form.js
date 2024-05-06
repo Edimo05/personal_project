@@ -116,7 +116,8 @@ function displayQuestions(id_section){
                       <input type="number" required step=".01" name="amount" id="amount" placeholder="1,245.56">
                   </div>
               </div>
-          </div>`;
+          </div>
+          <button type="submit" id="saveBtn">SAVE</button>`;
   } else if (questions == "income_questions") {
     questionsReturn =  `<div class="questions" id="income_questions">
               <div class="questions-column">
@@ -165,7 +166,8 @@ function displayQuestions(id_section){
                       <input type="number" required step=".01" name="amount" id="amount" placeholder="1,245.56">
                   </div>
               </div>
-          </div>`;
+          </div>
+          <button type="submit" id="saveBtn">SAVE</button>`;
   } else {
     questionsReturn =  `<div class="questions" id="funds_movement_questions">
               <div class="questions-column">
@@ -214,7 +216,8 @@ function displayQuestions(id_section){
                       <input type="number" required step=".01" name="amount" id="amount" placeholder="1,245.56">
                   </div>
               </div>
-          </div>`;
+          </div>
+          <button type="submit" id="saveBtn">SAVE</button>`;
   }
   //console.log(questionsReturn);
   return form.innerHTML = questionsReturn;
