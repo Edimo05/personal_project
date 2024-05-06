@@ -66,8 +66,11 @@ function selectedTab(tab){
 function displayQuestions(id_section){
   const questions = id_section.id + "_questions";
   //console.log(questions);
+  const form = document.getElementById("form");
+  let questionsReturn = ``;
+  //console.log(questionsReturn);
   if (questions == "expenses_questions") {
-    return `<div class="questions" id="expenses_questions">
+    questionsReturn =  `<div class="questions" id="expenses_questions">
               <div class="questions-column">
                   <div class="question">
                       <label for="description">Description</label>
@@ -115,7 +118,7 @@ function displayQuestions(id_section){
               </div>
           </div>`;
   } else if (questions == "income_questions") {
-    return `<div class="questions" id="income_questions">
+    questionsReturn =  `<div class="questions" id="income_questions">
               <div class="questions-column">
                   <div class="question">
                       <label for="description">Description</label>
@@ -164,7 +167,7 @@ function displayQuestions(id_section){
               </div>
           </div>`;
   } else {
-    return `<div class="questions" id="funds_movement_questions">
+    questionsReturn =  `<div class="questions" id="funds_movement_questions">
               <div class="questions-column">
                   <div class="question">
                       <label for="description">Description</label>
@@ -213,16 +216,19 @@ function displayQuestions(id_section){
               </div>
           </div>`;
   }
+  //console.log(questionsReturn);
+  return form.innerHTML = questionsReturn;
 }
 
 const headers = document.querySelectorAll(".header");
 selectedTab(document.getElementById("expenses"));
+displayQuestions(document.getElementById("expenses"));
 
 for (let i = 0; i < headers.length; i++) {
   const tab2 = document.getElementById(headers[i].id);
-  disableQuestion(tab2.id);
+  //disableQuestion(tab2.id);
   headers[i].addEventListener("click", () => {
-    //console.log(tab2);
+    console.log(tab2);
     selectedTab(tab2);
     displayQuestions(tab2);
     for (let j = 0; j < headers.length; j++) {

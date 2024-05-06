@@ -53,16 +53,6 @@ form {
     padding: 30px;
 }
 
-#expenses_questions {
-    display: block;
-    display: flex;
-}
-
-#income_questions, #funds_movement_questions {
-    display: none;
-    /* display: flex; */
-}
-
 .question {
     width: 100%;
     display: flex;
