@@ -63,14 +63,155 @@ function selectedTab(tab){
   tab.style.backgroundColor = "rgb(185, 191, 168)";
 }
 
-function displayQuestions(id_section, a){
+function displayQuestions(id_section){
   const questions = id_section.id + "_questions";
   //console.log(questions);
-  if (a == true) {
-    document.getElementById(questions).style.display = "block";
-    document.getElementById(questions).style.display = "flex";
+  if (questions == "expenses_questions") {
+    return `<div class="questions" id="expenses_questions">
+              <div class="questions-column">
+                  <div class="question">
+                      <label for="description">Description</label>
+                      <input type="text" name="description" placeholder="Pago luz 5/24" required>
+                  </div>
+                  <div class="question">
+                      <label for="select">Metodo</label>
+                      <select name="pay_method" id="pay_method" required>
+                          <option value="" selected>Select your option</option>
+                          <option value="tarjeta">Tarjeta</option>
+                          <option value="transferencia">Transferencia</option>
+                          <option value="retiro">Retiro</option>
+                          <option value="efectivo">Efectivo</option>
+                      </select>
+                  </div>
+                  <div class="question">
+                      <label for="select">Banco</label>
+                      <select name="bank" id="bank">
+                          <option value="" selected>Select your option</option>
+                          <option value="bbva">BBVA</option>
+                          <option value="scotia">Scotia</option>
+                          <option value="ibk">IBK</option>
+                          <option value="bcp">BCP</option>
+                          <option value="pichincha">Pichincha</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="questions-column">
+                  <div class="question">
+                      <label for="date">Date</label>
+                      <input type="date" name="date" required>
+                  </div>
+                  <div class="question">
+                      <label for="select">Tipo metodo</label>
+                      <select name="pay_sub_method" id="pay_sub_method">
+                          <option value="" selected>Select your option</option>
+                          <option value="debito">Debito</option>
+                          <option value="credito">Credito</option>
+                      </select>
+                  </div>
+                  <div class="question">
+                      <label for="amount">Amount</label>
+                      <input type="number" required step=".01" name="amount" id="amount" placeholder="1,245.56">
+                  </div>
+              </div>
+          </div>`;
+  } else if (questions == "income_questions") {
+    return `<div class="questions" id="income_questions">
+              <div class="questions-column">
+                  <div class="question">
+                      <label for="description">Description</label>
+                      <input type="text" name="description" placeholder="Pago luz 5/24" required>
+                  </div>
+                  <div class="question">
+                      <label for="select">Fuente</label>
+                      <select name="source" id="source" required>
+                          <option value="" selected>Select your option</option>
+                          <option value="sueldo">Sueldo</option>
+                          <option value="devolucion">Devolucion x gasto</option>
+                          <option value="otros">Otros</option>
+                      </select>
+                  </div>
+                  <div class="question">
+                      <label for="select">Banco</label>
+                      <select name="bank2" id="bank2">
+                          <option value="" selected>Select your option</option>
+                          <option value="bbva">BBVA</option>
+                          <option value="scotia">Scotia</option>
+                          <option value="ibk">IBK</option>
+                          <option value="bcp">BCP</option>
+                          <option value="pichincha">Pichincha</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="questions-column">
+                  <div class="question">
+                      <label for="date">Date</label>
+                      <input type="date" name="date" required>
+                  </div>
+                  <div class="question">
+                      <label for="select">Metodo</label>
+                      <select name="pay_method2" id="pay_method2" required>
+                          <option value="" selected>Select your option</option>
+                          <option value="plin">Plin</option>
+                          <option value="transferencia">Transferencia</option>
+                          <option value="deposito">Deposito</option>
+                          <option value="efectivo">Efectivo</option>
+                      </select>
+                  </div>
+                  <div class="question">
+                      <label for="amount">Amount</label>
+                      <input type="number" required step=".01" name="amount" id="amount" placeholder="1,245.56">
+                  </div>
+              </div>
+          </div>`;
   } else {
-    document.getElementById(questions).style.display = "none";
+    return `<div class="questions" id="funds_movement_questions">
+              <div class="questions-column">
+                  <div class="question">
+                      <label for="description">Description</label>
+                      <input type="text" name="description" placeholder="Pago luz 5/24" required>
+                  </div>
+                  <div class="question">
+                      <label for="select">Origen</label>
+                      <select name="source" id="source" required>
+                          <option value="" selected>Select your option</option>
+                          <option value="bbva">BBVA</option>
+                          <option value="scotia">Scotia</option>
+                          <option value="ibk">IBK</option>
+                          <option value="bcp">BCP</option>
+                          <option value="pichincha">Pichincha</option>
+                      </select>
+                  </div>
+                  <div class="question">
+                      <label for="select">Moneda</label>
+                      <select name="moneda" id="moneda" required>
+                          <option value="" selected>Select your option</option>
+                          <option value="soles">Soles</option>
+                          <option value="dolare">Dolares</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="questions-column">
+                  <div class="question">
+                      <label for="date">Date</label>
+                      <input type="date" name="date" required>
+                  </div>
+                  <div class="question">
+                      <label for="select">Destino</label>
+                      <select name="destino" id="destino" required>
+                          <option value="" selected>Select your option</option>
+                          <option value="bbva">BBVA</option>
+                          <option value="scotia">Scotia</option>
+                          <option value="ibk">IBK</option>
+                          <option value="bcp">BCP</option>
+                          <option value="pichincha">Pichincha</option>
+                      </select>
+                  </div>
+                  <div class="question">
+                      <label for="amount">Amount</label>
+                      <input type="number" required step=".01" name="amount" id="amount" placeholder="1,245.56">
+                  </div>
+              </div>
+          </div>`;
   }
 }
 
@@ -83,27 +224,12 @@ for (let i = 0; i < headers.length; i++) {
   headers[i].addEventListener("click", () => {
     //console.log(tab2);
     selectedTab(tab2);
-    displayQuestions(tab2, true);
+    displayQuestions(tab2);
     for (let j = 0; j < headers.length; j++) {
       if (headers[j].id !== headers[i].id) {
         const tab3 = document.getElementById(headers[j].id);
         revertStyle(tab3);
-        displayQuestions(tab3, false);
       }
-
-      const form = document.getElementById("form");
-
-      form.addEventListener("submit", (event) => {
-        //console.log(tab3.id);
-        event.preventDefault(); // Prevent default form submission
-
-        let formData = new FormData(form);
-
-        console.log("Form Data:");
-        for (const [key, value] of formData.entries()) {
-          console.log(`${key}: ${value}`);
-        }
-      });
     }
   });
 }
