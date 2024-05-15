@@ -1,15 +1,15 @@
-// const form = document.getElementById("form");
+const form = document.getElementById("form");
 
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault(); // Prevent default form submission
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // Prevent default form submission
 
-//   let formData = new FormData(form);
+  let formData = new FormData(form);
 
-//   console.log("Form Data:");
-//   for (const [key, value] of formData.entries()) {
-//     console.log(`${key}: ${value}`);
-//   }
-// });
+  console.log("Form Data:");
+  for (const [key, value] of formData.entries()) {
+    console.log(`${key}: ${value}`);
+  }
+});
 
 function disableQuestion(a){
   if (a == "expenses") {
@@ -59,8 +59,8 @@ function revertStyle(id){
 }
 
 function selectedTab(tab){
-  tab.style.color = "black";
-  tab.style.backgroundColor = "rgb(185, 191, 168)";
+  tab.style.color = "var(--secondary)";
+  tab.style.backgroundColor = "var(--hover-unselected)";
 }
 
 function displayQuestions(id_section){
@@ -213,7 +213,7 @@ function displayQuestions(id_section){
                   </div>
                   <div class="question">
                       <label for="amount">Amount</label>
-                      <input type="number" required step=".01" name="amount" id="amount" placeholder="1,245.56">
+                      <input  required step=".01" name="amount" id="amount" placeholder="1,245.56">
                   </div>
               </div>
           </div>
@@ -221,6 +221,18 @@ function displayQuestions(id_section){
   }
   //console.log(questionsReturn);
   return form.innerHTML = questionsReturn;
+}
+
+function numberComma(numberString) {
+    const reversed = numberString.split("").reverse().join("");
+    let formatted = "";
+    for (let i = 0; i < reversed.length; i++) {
+      formatted += reversed[i];
+      if ((i + 1) % 3 === 0 && i !== 0) {
+        formatted += ",";
+      }
+    }
+    return formatted.split("").reverse().join("");
 }
 
 const headers = document.querySelectorAll(".header");
@@ -231,9 +243,32 @@ for (let i = 0; i < headers.length; i++) {
   const tab2 = document.getElementById(headers[i].id);
   //disableQuestion(tab2.id);
   headers[i].addEventListener("click", () => {
-    console.log(tab2);
+    //console.log(tab2);
     selectedTab(tab2);
     displayQuestions(tab2);
+    const amount = document.getElementById("amount");
+    console.log(amount);
+    amount.addEventListener("input", (e) => {
+    const inputValue = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+    const parts = inputValue.split("."); // Split for decimal handling (optional)
+        
+    let formattedValue = "";
+        
+    // Format integer part (thousands, millions, billions)
+    if (parts.length > 0) {
+      const integerPart = parts[0];
+      formattedValue = numberComma(integerPart);
+    }
+        
+    // Format decimal part (optional)
+    if (parts.length > 1) {
+      const decimalPart = parts[1].slice(0, 2); // Limit to 2 decimal places
+      formattedValue += "." + decimalPart;
+    }
+        
+      amount.value = formattedValue;
+    });
+    numberComma(amount.value);
     for (let j = 0; j < headers.length; j++) {
       if (headers[j].id !== headers[i].id) {
         const tab3 = document.getElementById(headers[j].id);
