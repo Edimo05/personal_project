@@ -1,0 +1,12 @@
+:root {
+    --primary: #E1FA70;
+    --secondary: #000000;
+    --hover-unselected: rgb(185, 191, 168);
+    --hover-selected: rgb(91, 96, 78);
+    --hover-button: rgb(66, 73, 46);
+    --seconday-letter: #FCFFF6;
+}
+
+* {
+    font-family: "Source Sans 3", sans-serif;
+}

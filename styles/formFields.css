@@ -1,0 +1,112 @@
+@media  screen and (min-width: 916px) {
+    form {
+        background-color: var(--primary);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .questions {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .questions-column {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 30px;
+    }
+    
+    .question {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+    
+    label {
+        color: var(--secondary);
+        margin: 20px 0px 10px 0px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+    
+    input {
+        background-color: var(--seconday-letter);
+        padding: 15px;
+        font-size: 15px;
+        color: var(--secondary);
+    }
+    
+    option {
+        background-color: var(--seconday-letter);
+        padding: 15px;
+        font-size: 15px;
+        color: var(--secondary);
+    }
+    
+    select {
+        background-color: var(--seconday-letter);
+        padding: 15px;
+        font-size: 15px;
+        color: var(--secondary);
+    }
+}
+
+@media screen and (max-width: 915px) {
+    form {
+        background-color: var(--primary);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .questions {
+        display: flex;
+        /* justify-content: space-around; */
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .questions-column {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        /* padding: 10px; */
+    }
+    
+    .question {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+    
+    label {
+        color: var(--secondary);
+        margin: 20px 0px 10px 0px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    
+    input {
+        background-color: var(--seconday-letter);
+        padding: 15px;
+        font-size: 25px;
+        color: var(--secondary);
+    }
+    
+    option {
+        background-color: var(--seconday-letter);
+        padding: 15px;
+        font-size: 25px;
+        color: var(--secondary);
+        /* display: inline; */
+    }
+    
+    select {
+        background-color: var(--seconday-letter);
+        padding: 15px;
+        font-size: 25px;
+        color: var(--secondary);
+    }
+}

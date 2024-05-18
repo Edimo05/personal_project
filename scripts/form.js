@@ -11,7 +11,7 @@ form.addEventListener("submit", (event) => {
   }
 });
 
-function disableQuestion(a){
+export function disableQuestion(a) {
   if (a == "expenses") {
     const method = document.getElementById("pay_method");
     const sub_method = document.getElementById("pay_sub_method");
@@ -53,17 +53,18 @@ function disableQuestion(a){
   }
 }
 
-function revertStyle(id){
+export function revertStyle(id) {
   id.style.color = "";
   id.style.backgroundColor = "";
 }
 
-function selectedTab(tab){
+export function selectedTab(tab) {
+  console.log(tab);
   tab.style.color = "var(--secondary)";
   tab.style.backgroundColor = "var(--hover-unselected)";
 }
 
-function displayQuestions(id_section){
+export function displayQuestions(id_section) {
   const questions = id_section.id + "_questions";
   //console.log(questions);
   const form = document.getElementById("form");
@@ -101,7 +102,7 @@ function displayQuestions(id_section){
               <div class="questions-column">
                   <div class="question">
                       <label for="date">Date</label>
-                      <input type="date" name="date" required>
+                      <input type="date" name="date" id="date" required>
                   </div>
                   <div class="question">
                       <label for="select">Tipo metodo</label>
@@ -149,7 +150,7 @@ function displayQuestions(id_section){
               <div class="questions-column">
                   <div class="question">
                       <label for="date">Date</label>
-                      <input type="date" name="date" required>
+                      <input type="date" name="date" id="date" required>
                   </div>
                   <div class="question">
                       <label for="select">Metodo</label>
@@ -198,7 +199,7 @@ function displayQuestions(id_section){
               <div class="questions-column">
                   <div class="question">
                       <label for="date">Date</label>
-                      <input type="date" name="date" required>
+                      <input type="date" name="date" id="date" required>
                   </div>
                   <div class="question">
                       <label for="select">Destino</label>
@@ -223,57 +224,46 @@ function displayQuestions(id_section){
   return form.innerHTML = questionsReturn;
 }
 
-function numberComma(numberString) {
-    const reversed = numberString.split("").reverse().join("");
-    let formatted = "";
-    for (let i = 0; i < reversed.length; i++) {
-      formatted += reversed[i];
-      if ((i + 1) % 3 === 0 && i !== 0) {
-        formatted += ",";
-      }
-    }
-    return formatted.split("").reverse().join("");
-}
-
-const headers = document.querySelectorAll(".header");
-selectedTab(document.getElementById("expenses"));
+//selectedTab(document.getElementById("expenses"));
 displayQuestions(document.getElementById("expenses"));
 
-for (let i = 0; i < headers.length; i++) {
-  const tab2 = document.getElementById(headers[i].id);
-  //disableQuestion(tab2.id);
-  headers[i].addEventListener("click", () => {
-    //console.log(tab2);
-    selectedTab(tab2);
-    displayQuestions(tab2);
-    const amount = document.getElementById("amount");
-    console.log(amount);
-    amount.addEventListener("input", (e) => {
-    const inputValue = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-    const parts = inputValue.split("."); // Split for decimal handling (optional)
-        
-    let formattedValue = "";
-        
-    // Format integer part (thousands, millions, billions)
-    if (parts.length > 0) {
-      const integerPart = parts[0];
-      formattedValue = numberComma(integerPart);
-    }
-        
-    // Format decimal part (optional)
-    if (parts.length > 1) {
-      const decimalPart = parts[1].slice(0, 2); // Limit to 2 decimal places
-      formattedValue += "." + decimalPart;
-    }
-        
-      amount.value = formattedValue;
-    });
-    numberComma(amount.value);
-    for (let j = 0; j < headers.length; j++) {
-      if (headers[j].id !== headers[i].id) {
-        const tab3 = document.getElementById(headers[j].id);
-        revertStyle(tab3);
+export function selectedHeader (navId) {
+  const headers = document.querySelectorAll(navId);
+  for (let i = 0; i < headers.length; i++) {
+    const tab2 = document.getElementById(headers[i].id);
+    disableQuestion(tab2.id);
+    headers[i].addEventListener("click", () => {
+      //console.log(tab2);
+      selectedTab(tab2);
+      displayQuestions(tab2);
+      for (let j = 0; j < headers.length; j++) {
+        if (headers[j].id !== headers[i].id) {
+          const tab3 = document.getElementById(headers[j].id);
+          revertStyle(tab3);
+        }
       }
-    }
-  });
+    });
+  }
 }
+
+selectedHeader(".header");
+
+const date = document.getElementById("date");
+
+export function currentDate () {
+  var dtToday = new Date();
+
+  var month = dtToday.getMonth();
+  var day = dtToday.getDate();
+  var year = dtToday.getFullYear();
+
+  if(month < 10)
+      month = '0' + month.toString();
+  if(day < 10)
+      day = '0' + day.toString();
+
+  var maxDate = year + '-' + month + '-' + day;
+  date.max = maxDate;
+}
+
+currentDate();

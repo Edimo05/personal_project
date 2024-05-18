@@ -1,0 +1,16 @@
+{
+    "headers": [
+    {
+        "id": "expenses",
+        "text": "expenses_text"
+    },
+    {
+        "id": "income",
+        "text": "income_text"
+    },
+    {
+        "id": "funds_movement",
+        "text": "funds_movement_text"
+    }
+]
+}
