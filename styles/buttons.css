@@ -1,14 +1,26 @@
 button {
-    width: 50%;
+    width: 100%;
     padding: 20px;
     align-self: center;
     font-family: "Arvo";
     font-size: 20px;
     background-color: var(--secondary);
-    color: var(--seconday-letter);
-    margin: 25px 0px;
+    color: var(--secondary-letter);
+    margin: 25px;
 }
 
 button:hover {
     background-color: var(--hover-button);
+}
+
+@media screen and (max-width: 412px) {
+    button {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 413px) {
+    button {
+        width: 60%;
+    }
 }

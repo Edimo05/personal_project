@@ -1,0 +1,88 @@
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-show {
+    display: flex;
+}
+
+.header-no-show {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px var(--secondary-letter) solid;
+    /* border-bottom: 8px var(--secondary) solid; */
+    color: var(--secondary);
+    background-color: var(--hover-unselected);
+    width: 100%;
+    /* font-family: "Arvo"; */
+}
+
+.header:hover {
+    background-color: var(--hover-button);
+    color: var(--secondary-letter);
+}
+
+p {
+    margin-top: 5px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 5px;
+}
+
+.selected {
+    background-color: var(--secondary);
+    color: var(--secondary-letter);
+    border-bottom: 8px var(--hover-selected) solid;
+    border-right: 1px var(--secondary-letter) solid;
+}
+
+.selected:hover, .navBttn:hover, .navBttn:hover ~ #icon {
+    background-color: var(--hover-selected);
+    color: var(--secondary-letter);
+}
+
+.navBttn {
+    background-color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 15px;
+}
+
+#icon {
+    color: var(--secondary-letter);
+}
+
+@media screen and (min-width: 413px) {
+    .header {
+        border-bottom: 8px var(--secondary) solid;
+    }
+
+    h2 {
+        font-size: medium;
+    }
+
+    p {
+        font-size: small;
+    }
+}
+
+@media screen and (min-width: 1023px) {
+    h2 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+}

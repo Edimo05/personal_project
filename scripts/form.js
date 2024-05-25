@@ -60,11 +60,11 @@ export function revertStyle(id) {
 
 export function selectedTab(tab) {
   console.log(tab);
-  tab.style.color = "var(--secondary)";
-  tab.style.backgroundColor = "var(--hover-unselected)";
+  tab.classList.add("selected");
 }
 
 export function displayQuestions(id_section) {
+  //console.log("displayQuestions");
   const questions = id_section.id + "_questions";
   //console.log(questions);
   const form = document.getElementById("form");
@@ -224,29 +224,31 @@ export function displayQuestions(id_section) {
   return form.innerHTML = questionsReturn;
 }
 
-//selectedTab(document.getElementById("expenses"));
-displayQuestions(document.getElementById("expenses"));
-
-export function selectedHeader (navId) {
-  const headers = document.querySelectorAll(navId);
-  for (let i = 0; i < headers.length; i++) {
-    const tab2 = document.getElementById(headers[i].id);
-    disableQuestion(tab2.id);
-    headers[i].addEventListener("click", () => {
-      //console.log(tab2);
-      selectedTab(tab2);
-      displayQuestions(tab2);
-      for (let j = 0; j < headers.length; j++) {
-        if (headers[j].id !== headers[i].id) {
-          const tab3 = document.getElementById(headers[j].id);
-          revertStyle(tab3);
-        }
-      }
-    });
-  }
+window.onload = function () {
+  selectedTab(document.getElementById("expenses"));
+  displayQuestions(document.getElementById("expenses"));
 }
 
-selectedHeader(".header");
+// export function selectedHeader (navId) {
+//   const headers = document.querySelectorAll(navId);
+//   for (let i = 0; i < headers.length; i++) {
+//     const tab2 = document.getElementById(headers[i].id);
+//     disableQuestion(tab2.id);
+//     headers[i].addEventListener("click", () => {
+//       //console.log(tab2);
+//       selectedTab(tab2);
+//       displayQuestions(tab2);
+//       for (let j = 0; j < headers.length; j++) {
+//         if (headers[j].id !== headers[i].id) {
+//           const tab3 = document.getElementById(headers[j].id);
+//           revertStyle(tab3);
+//         }
+//       }
+//     });
+//   }
+// }
+
+// selectedHeader(".header");
 
 const date = document.getElementById("date");
 
