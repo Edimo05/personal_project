@@ -12,19 +12,5 @@
         "id": "funds_movement",
         "text": "funds_movement_text"
     }
-    ],
-    "footers": [
-        {
-            "id": "foot1",
-            "text": "foot1"
-        },
-        {
-            "id": "foot2",
-            "text": "foot2"
-        },
-        {
-            "id": "foot3",
-            "text": "foot3"
-        }
     ]
 }
